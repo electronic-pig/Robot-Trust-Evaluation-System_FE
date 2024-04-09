@@ -240,7 +240,7 @@ const initLevelChart = (academic) => {
       right: "2%",
       bottom: "3%",
     },
-    color: "#f5940c",
+    color: "#36a99e",
     xAxis: {
       type: "value",
       axisLabel: {

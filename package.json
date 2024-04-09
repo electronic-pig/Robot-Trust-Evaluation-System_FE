@@ -1,6 +1,6 @@
 {
-  "name": "gkvr_system_frontend",
-  "version": "2.0.0",
+  "name": "robot-trust-evaluation-system_fe",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.2.4",
+    "vite": "^5.2.6",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "vite-plugin-vue-devtools": "^7.0.20"

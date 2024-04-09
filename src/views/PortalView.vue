@@ -290,7 +290,7 @@ h3 {
 .btn-hover.btn-color {
   background-image: linear-gradient(
     to right,
-    #f5940c,
+    #36a99e,
     #f6a027,
     #f7ac42,
     #f9c478
