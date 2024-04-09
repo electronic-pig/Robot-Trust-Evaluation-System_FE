@@ -132,7 +132,7 @@ const loginForm = reactive({
   password: "",
 });
 
-const login = async () => {
+const login = () => {
   if (!loginForm.username || !loginForm.password) {
     ElMessage.error("请填写完整的登录信息！");
     return;
@@ -141,25 +141,11 @@ const login = async () => {
     fullscreen: true,
     text: "正在加载中...",
   });
-  try {
-    const response = await request.post("/user/login", loginForm);
-    if (response.code == 200) {
-      ElMessage.success("登录成功！");
-      showLoginDialog.value = false;
-      localStorage.setItem("username", loginForm.username);
-      loginForm.username = "";
-      loginForm.password = "";
-      router.push("/home/school");
-    } else {
-      ElMessage.error(response.message);
-    }
-  } catch (error) {
-    ElMessage.error(error);
-  }
+  router.push("/home/school");
   loadingInstance.close();
 };
 
-const register = async () => {
+const register = () => {
   if (
     !registerForm.username ||
     !registerForm.password ||
@@ -177,20 +163,11 @@ const register = async () => {
     fullscreen: true,
     text: "正在加载中...",
   });
-  try {
-    const response = await request.post("/user/register", registerForm);
-    if (response.code == 200) {
-      ElMessage.success("注册成功！");
-      showRegisterDialog.value = false;
-      registerForm.username = "";
-      registerForm.password = "";
-      registerForm.checkPassword = "";
-    } else {
-      ElMessage.error(response.message);
-    }
-  } catch (error) {
-    ElMessage.error(error);
-  }
+  ElMessage.success("注册成功！");
+  showRegisterDialog.value = false;
+  registerForm.username = "";
+  registerForm.password = "";
+  registerForm.checkPassword = "";
   loadingInstance.close();
 };
 </script>
