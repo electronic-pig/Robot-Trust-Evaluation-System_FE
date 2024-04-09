@@ -2,8 +2,8 @@
   <div class="background">
     <div class="center-container">
       <div class="animated-text">
-        <h1>高考志愿推荐系统</h1>
-        <h3>GaoKao Volunteer and Recommend System</h3>
+        <h1>康复护理机器人信任度评估系统</h1>
+        <h3>Rehabilitation Nursing Robot Trust Evaluation System</h3>
       </div>
       <div class="btn-container animated-text">
         <button class="btn-hover btn-color" @click="showRegisterDialog = true">
@@ -218,23 +218,17 @@ const register = async () => {
 }
 
 h1 {
-  line-height: 0%;
-  padding: 0;
-  margin-top: 90px;
-  font-family: "Microsoft Yahei";
-  font-weight: bold;
-  color: #666;
-  letter-spacing: 8px;
+  margin-bottom: 0;
+  font-weight: 500;
+  color: #333;
   font-size: 80px;
   text-align: center;
 }
 
 h3 {
-  padding: 0;
-  font-family: "Microsoft Yahei";
+  font-family: serif;
   font-weight: bold;
-  color: #666;
-  letter-spacing: 4px;
+  color: #333;
   font-size: 30px;
   text-align: center;
 }
@@ -291,10 +285,10 @@ h3 {
   background-image: linear-gradient(
     to right,
     #36a99e,
-    #f6a027,
-    #f7ac42,
-    #f9c478
+    #4cb3a9,
+    #79c6be,
+    #a6d9d4
   );
-  box-shadow: 0 4px 15px 0 #f9c478;
+  box-shadow: 0 4px 15px 0 #4cb3a9;
 }
 </style>
