@@ -7,7 +7,7 @@ import zhCn from "element-plus/es/locale/lang/zh-cn";
 import "element-plus/dist/index.css";
 import "@/assets/css/app.css";
 import "normalize.css";
-import wonderland from "@/assets/wonderland.json"
+
 
 const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -15,5 +15,3 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 app.use(router).use(ElementPlus, { locale: zhCn }).mount("#app");
 
-app.config.globalProperties.$echarts = echarts;
-echarts.registerTheme("customed", wonderland);
