@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import PortalView from "@/views/PortalView.vue";
 import HomeView from "@/views/HomeView.vue";
-import SchoolView from "@/views/SchoolView.vue";
-import MajorView from "@/views/MajorView.vue";
-import RecommendView from "@/views/RecommendView.vue";
+import SurveyView from "@/views/SurveyView.vue";
+import AnalysisView from "@/views/AnalysisView.vue";
+import ExperimentView from "@/views/ExperimentView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,22 +19,22 @@ const router = createRouter({
       children: [
         {
           path: "",
-          redirect: "/home/school",
+          redirect: "/home/survey",
         },
         {
-          path: "school",
-          name: "school",
-          component: SchoolView,
+          path: "survey",
+          name: "survey",
+          component: SurveyView,
         },
         {
-          path: "major",
-          name: "major",
-          component: MajorView,
+          path: "analysis",
+          name: "analysis",
+          component: AnalysisView,
         },
         {
-          path: "recommend",
-          name: "recommend",
-          component: RecommendView,
+          path: "experiment",
+          name: "experiment",
+          component: ExperimentView,
         },
       ],
     },

@@ -141,7 +141,8 @@ const login = () => {
     fullscreen: true,
     text: "正在加载中...",
   });
-  router.push("/home/school");
+  router.push("/home/survey");
+  localStorage.setItem("username", loginForm.username);
   loadingInstance.close();
 };
 

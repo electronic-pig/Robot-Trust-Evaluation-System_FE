@@ -40,22 +40,22 @@ import { useRouter, useRoute } from "vue-router";
 
 const menu = [
   {
-    path: "/home/school",
-    name: "school",
-    lable: "高校信息查询",
-    url: "/home/school",
+    path: "/home/survey",
+    name: "survey",
+    lable: "调查问卷",
+    url: "/home/survey",
   },
   {
-    path: "/home/major",
-    name: "major",
-    lable: "专业信息查询",
-    url: "/home/major",
+    path: "/home/experiment",
+    name: "experiment",
+    lable: "实验验证",
+    url: "/home/experiment",
   },
   {
-    path: "/home/recommend",
-    name: "recommend",
-    lable: "个性化志愿推荐",
-    url: "/home/recommend",
+    path: "/home/analysis",
+    name: "analysis",
+    lable: "数据分析",
+    url: "/home/analysis",
   },
 ];
 const router = useRouter();
