@@ -98,7 +98,6 @@ onMounted(async () => {
     header: ["A", "B", "C"],
     defval: "",
   });
-  console.log(jsonData);
   const seriesData1 = jsonData.map((item) => item.A);
   const seriesData2 = jsonData.map((item) => item.B);
   const seriesData3 = jsonData.map((item) => item.C);
