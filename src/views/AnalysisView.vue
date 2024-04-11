@@ -3,7 +3,7 @@
   <div class="steps">
     <el-steps :active="2" align-center>
       <el-step title="Step 1" description="上传数据文件" />
-      <el-step title="Step 2" description="上传模型文件" />
+      <el-step title="Step 2" description="选择模型" />
       <el-step title="Step 3" description="开始分析" />
     </el-steps>
   </div>
@@ -12,8 +12,7 @@
       class="upload-demo"
       drag
       action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-      multiple
-      style="width: 45%"
+      multiple  
     >
       <el-icon class="el-icon--upload"><upload-filled /></el-icon>
       <div class="el-upload__text">拖拽文件 或 <em>点击上传</em></div>
@@ -21,24 +20,18 @@
         <div class="el-upload__tip">数据文件应不超过2MB</div>
       </template>
     </el-upload>
-    <el-upload
-      class="upload-demo"
-      drag
-      action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-      multiple
-      style="width: 45%"
-    >
-      <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-      <div class="el-upload__text">拖拽文件 或 <em>点击上传</em></div>
-      <template #tip>
-        <div class="el-upload__tip">模型文件应不超过2GB</div>
-      </template>
-    </el-upload>
   </div>
-  <div class="button-container">
+  <div class="radio-group">
+    <el-radio-group v-model="radio" size="large">
+      <el-radio-button label="AHP分析法" value="AHP分析法" />
+      <el-radio-button label="ANP分析法" value="ANP分析法" />
+      <el-radio-button label="dematel分析法" value="dematel分析法" />
+    </el-radio-group>
     <el-button type="primary" size="large">开始分析</el-button>
   </div>
-  <h1>信任度量</h1>
+  <div class="button-container">
+  </div>
+  <h1>信任度量表</h1>
   <el-table :data="tableData" style="width: 100%">
     <el-table-column label="ED信任度量表">
       <el-table-column prop="[0]" label="序号" width="60" />
@@ -77,7 +70,9 @@ import { ElLoading } from "element-plus";
 import * as XLSX from "xlsx";
 import wonderland from "@/assets/wonderland.json";
 
+const radio = ref("AHP分析法");
 const tableData = ref([]);
+
 onMounted(async () => {
   const loadingInstance = ElLoading.service({
     fullscreen: true,
@@ -300,14 +295,14 @@ h1 {
   justify-content: center;
 }
 
-.upload {
-  display: flex;
-  justify-content: space-around;
-}
-
 .el-upload__tip {
   display: flex;
   justify-content: center;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-between;
 }
 
 .charts {
