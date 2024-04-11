@@ -1,5 +1,12 @@
 <template>
   <h1>模型上传</h1>
+  <div class="steps">
+    <el-steps :active="2" align-center>
+      <el-step title="Step 1" description="上传数据文件" />
+      <el-step title="Step 2" description="上传模型文件" />
+      <el-step title="Step 3" description="开始分析" />
+    </el-steps>
+  </div>
   <div class="upload">
     <el-upload
       class="upload-demo"
@@ -283,6 +290,11 @@ onMounted(async () => {
 h1 {
   color: var(--theme--color);
 }
+
+.steps {
+  margin-bottom: 20px;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
