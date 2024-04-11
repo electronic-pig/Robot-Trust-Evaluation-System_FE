@@ -116,7 +116,6 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { ElLoading, ElMessage } from "element-plus";
-import request from "@/utils/request.js";
 
 const router = useRouter();
 const showLoginDialog = ref(false);

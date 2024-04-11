@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive } from "vue";
+import { ref, computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
 const menu = [

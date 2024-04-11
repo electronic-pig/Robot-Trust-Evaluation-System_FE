@@ -1,5 +1,5 @@
 <template>
-  <h1>模型上传</h1>
+  <h1>模型分析</h1>
   <div class="steps">
     <el-steps :active="2" align-center>
       <el-step title="Step 1" description="上传数据文件" />
@@ -12,7 +12,7 @@
       class="upload-demo"
       drag
       action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-      multiple  
+      multiple
     >
       <el-icon class="el-icon--upload"><upload-filled /></el-icon>
       <div class="el-upload__text">拖拽文件 或 <em>点击上传</em></div>
@@ -29,8 +29,7 @@
     </el-radio-group>
     <el-button type="primary" size="large">开始分析</el-button>
   </div>
-  <div class="button-container">
-  </div>
+  <div class="button-container"></div>
   <h1>信任度量表</h1>
   <el-table :data="tableData" style="width: 100%">
     <el-table-column label="ED信任度量表">

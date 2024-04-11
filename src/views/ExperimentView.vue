@@ -1,10 +1,22 @@
 <template>
+  <h3>HbO浓度图例</h3>
+  <div class="imgs">
+    <img src="@/assets/images/1.jpg" style="width: 45%" />
+    <img src="@/assets/images/2.jpg" style="width: 45%" />
+  </div>
   <div id="lineChart" style="width: 100%; height: 600px"></div>
+  <h3>实验过程图例</h3>
+   <div class="imgs">
+    <img src="@/assets/images/4.png" style="width: 45%" />
+    <img src="@/assets/images/5.png" style="width: 45%" />
+  </div>
   <div id="mutilineChart" style="width: 100%; height: 600px"></div>
+  <h3>演示视频</h3>
+  <video src="@/assets/videos/1.mp4" controls style="width: 100%;"></video>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { ElLoading } from "element-plus";
 import * as echarts from "echarts";
 import * as XLSX from "xlsx";
@@ -172,4 +184,12 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.imgs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+h3 {
+  color: #666;
+}
 </style>
