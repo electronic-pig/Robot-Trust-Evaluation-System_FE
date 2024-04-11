@@ -28,10 +28,34 @@
       </template>
     </el-upload>
   </div>
-
   <div class="button-container">
     <el-button type="primary" size="large">开始分析</el-button>
   </div>
+  <h1>信任度量</h1>
+  <el-table :data="tableData" style="width: 100%">
+    <el-table-column label="ED信任度量表">
+      <el-table-column prop="[0]" label="序号" width="60" />
+      <el-table-column prop="[1]" label="问题" width="235" />
+    </el-table-column>
+    <el-table-column label="Subject No.1">
+      <el-table-column prop="[2]" label="第一次评分" width="100" />
+      <el-table-column prop="[3]" label="第二次" width="80" />
+      <el-table-column prop="[4]" label="第三次" width="80" />
+      <el-table-column prop="[5]" label="第四次" />
+    </el-table-column>
+    <el-table-column label="Subject No.2">
+      <el-table-column prop="[6]" label="第一次评分" width="100" />
+      <el-table-column prop="[7]" label="第二次" width="80" />
+      <el-table-column prop="[8]" label="第三次" width="80" />
+      <el-table-column prop="[9]" label="第四次" />
+    </el-table-column>
+    <el-table-column label="Subject No.3">
+      <el-table-column prop="[10]" label="第一次评分" width="100" />
+      <el-table-column prop="[11]" label="第二次" width="80" />
+      <el-table-column prop="[12]" label="第三次" width="80" />
+      <el-table-column prop="[13]" label="第四次" />
+    </el-table-column>
+  </el-table>
   <h1>结果分析</h1>
   <div class="charts">
     <div id="firstChart" style="width: 100%; height: 300px"></div>
@@ -42,9 +66,26 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
+import { ElLoading } from "element-plus";
+import * as XLSX from "xlsx";
 import wonderland from "@/assets/wonderland.json";
 
-onMounted(() => {
+const tableData = ref([]);
+onMounted(async () => {
+  const loadingInstance = ElLoading.service({
+    fullscreen: true,
+    text: "正在加载中...",
+  });
+  let response = await fetch("/sjs-ED信任度量表+近红外数据+眼动.xlsx");
+  let arrayBuffer = await response.arrayBuffer();
+  let data = new Uint8Array(arrayBuffer);
+  let workbook = XLSX.read(data, { type: "array" });
+  let sheetNames = workbook.SheetNames;
+  let worksheet = workbook.Sheets[sheetNames[0]];
+  let jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+  tableData.value = jsonData.slice(2, 14);
+  console.log(jsonData.slice(2, 14));
+
   echarts.registerTheme("customed", wonderland);
   const firstChart = echarts.init(
     document.getElementById("firstChart"),
@@ -234,6 +275,7 @@ onMounted(() => {
   };
   firstChart.setOption(option1);
   secondChart.setOption(option2);
+  loadingInstance.close();
 });
 </script>
 
