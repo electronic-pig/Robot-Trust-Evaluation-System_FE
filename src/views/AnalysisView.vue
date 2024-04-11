@@ -1,7 +1,7 @@
 <template>
   <h1>模型分析</h1>
   <div class="steps">
-    <el-steps :active="2" align-center>
+    <el-steps :active="step" align-center>
       <el-step title="Step 1" description="上传数据文件" />
       <el-step title="Step 2" description="选择模型" />
       <el-step title="Step 3" description="开始分析" />
@@ -9,10 +9,9 @@
   </div>
   <div class="upload">
     <el-upload
-      class="upload-demo"
       drag
       action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-      multiple
+      :on-change="handleChange"
     >
       <el-icon class="el-icon--upload"><upload-filled /></el-icon>
       <div class="el-upload__text">拖拽文件 或 <em>点击上传</em></div>
@@ -27,7 +26,9 @@
       <el-radio-button label="ANP分析法" value="ANP分析法" />
       <el-radio-button label="dematel分析法" value="dematel分析法" />
     </el-radio-group>
-    <el-button type="primary" size="large">开始分析</el-button>
+    <el-button type="primary" size="large" @click="beginAnalysis"
+      >开始分析</el-button
+    >
   </div>
   <div class="button-container"></div>
   <h1>信任度量表</h1>
@@ -65,12 +66,30 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import * as echarts from "echarts";
-import { ElLoading } from "element-plus";
+import { ElLoading, ElMessage } from "element-plus";
 import * as XLSX from "xlsx";
 import wonderland from "@/assets/wonderland.json";
 
+const step = ref(1);
 const radio = ref("AHP分析法");
 const tableData = ref([]);
+
+const handleChange = (file) => {
+  step.value = 2;
+  ElMessage.success(`${file.name} 上传成功`);
+};
+
+const beginAnalysis = () => {
+  step.value = 3;
+  const loadingInstance = ElLoading.service({
+    fullscreen: true,
+    text: "正在分析中...",
+  });
+  setTimeout(() => {
+    loadingInstance.close();
+    ElMessage.success("分析完成");
+  }, 5000);
+};
 
 onMounted(async () => {
   const loadingInstance = ElLoading.service({
@@ -85,7 +104,6 @@ onMounted(async () => {
   let worksheet = workbook.Sheets[sheetNames[0]];
   let jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
   tableData.value = jsonData.slice(2, 14);
-  console.log(jsonData.slice(2, 14));
 
   echarts.registerTheme("customed", wonderland);
   const firstChart = echarts.init(
@@ -302,6 +320,7 @@ h1 {
 .radio-group {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .charts {
