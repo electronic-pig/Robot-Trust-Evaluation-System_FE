@@ -5,7 +5,7 @@ import VueDevTools from "vite-plugin-vue-devtools";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/Robot-Trust-Evaluation-System_FE/",
   plugins: [vue(), VueDevTools()],
   resolve: {
     alias: {
